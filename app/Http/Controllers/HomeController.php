@@ -13,4 +13,9 @@ class HomeController extends Controller
 
         return view('admin.slider.index', compact('sliders'));
     }
+
+    public function AddSlider(){
+
+        return view('admin.slider.create');
+    }
 }

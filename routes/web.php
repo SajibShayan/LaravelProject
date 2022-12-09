@@ -58,7 +58,7 @@ Route::post('/brand/update/{id}', [BrandController::class, 'Update'])->middlewar
 //Admin All Route
 
 Route::get('/home/slider', [HomeController::class, 'HomeSlider'])->name('home.slider');
-
+Route::get('/add/slider', [HomeController::class, 'AddSlider'])->name('add.slider');
 
 
 

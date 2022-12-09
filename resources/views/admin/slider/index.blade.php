@@ -8,6 +8,9 @@
 
         <div class="container">
             <div class="row">
+                <h4>Home Slider</h4>
+                <a href="{{ route('add.slider') }}"><button class="btn btn-info">Add Slider</button></a>
+                <br><br>
                 <div class="col-md-12">
                     <div class="card">
                         @if(session('success'))
