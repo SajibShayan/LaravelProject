@@ -2,12 +2,17 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\HomeController;
+use App\Models\Brand;
 use App\Models\Category;
 use App\Models\User;
 use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Auth\Events\PasswordReset;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Password;
+use Illuminate\Support\Str;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,7 +32,9 @@ Route::get('/email/verify', function () {
 
 
 Route::get('/', function () {
-    return view('welcome');
+
+    $brands = Brand::all();
+    return view('home', compact('brands'));
 });
 
 //category controller
@@ -48,8 +55,9 @@ Route::get('/brand/edit/{id}', [BrandController::class, 'Edit']);
 Route::post('/brand/update/{id}', [BrandController::class, 'Update'])->middleware('AddBrandCheck');
 
 
+//Admin All Route
 
-
+Route::get('/home/slider', [HomeController::class, 'HomeSlider'])->name('home.slider');
 
 
 
@@ -103,8 +111,10 @@ Route::get('/user/logout', [BrandController::class, 'userLogout'])->name('user.l
 // //Reset password
 // Route::get('/forgot-password', function () {
 //     return view('auth.forgot-password');
-// })->middleware('guest')->name('password.store');
-
+// })->middleware('guest')->name('password.request');
+// Route::get('/reset-password/{token}', function ($token) {
+//     return view('auth.reset-password', ['token' => $token]);
+// })->middleware('guest')->name('password.reset');
 
 
 //Push from local repository Dec 8 2022//
