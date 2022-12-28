@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class AddCateCheck
+class HomeAboutCheck
 {
     /**
      * Handle an incoming request.
@@ -16,16 +16,16 @@ class AddCateCheck
      */
     public function handle(Request $request, Closure $next)
     {
+       // dd("Hello");
         $validateData = $request->validate([
-            'category_name' => 'required|unique:categories|max:100',
-           
-
+            'title' => 'required',  
+            'long_dis' => 'required',
+            'short_dis' => 'required',       
         ],
         [
-            'category_name.required' => 'Please Input Category Name',
-            
-        ]);
+            'title.required' => 'Please Input the HomeAbout Title',
 
+        ]);
         return $next($request);
     }
 }

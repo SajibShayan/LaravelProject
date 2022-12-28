@@ -47,6 +47,11 @@ class BrandController extends Controller
          $brands = Brand::find($id);
          return view('admin.brand.edit', compact('brands'));
     }
+    public function Delete($id){
+
+        $brands = Brand::find($id)->delete();
+        return redirect()->back()->with('success', 'Category Delete Permanently');
+    }
 
 
 

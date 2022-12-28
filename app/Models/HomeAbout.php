@@ -4,15 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
-
-class Brand extends Model
+class HomeAbout extends Model
 {
     use HasFactory;
+
     protected $fillable = [
-        'brand_name',
-        'brand_image',
+        'title',
+        'short_dis',
+        'long_dis',
     ];
-  
 }

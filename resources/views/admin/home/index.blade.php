@@ -8,8 +8,8 @@
 
         <div class="container">
             <div class="row">
-                <h4>Home Slider</h4>
-                <a href="{{ route('add.slider') }}"><button class="btn btn-info">Add Slider</button></a>
+                <h4>Home About</h4>
+                <a href="{{ route('add.about') }}"><button class="btn btn-info">Add About</button></a>
                 <br><br>
                 <div class="col-md-12">
                     <div class="card">
@@ -21,31 +21,32 @@
                             </button>
                         </div>
                         @endif
-                        <div class="card-header">All Slider</div>
+                        <div class="card-header">All About Data</div>
 
 
                         <table class="table">
                             <thead>
                                 <tr>
                                     <th scope="col" width= "5%">Sl No</th>
-                                    <th scope="col" width= "15%">Slider Title</th>
-                                    <th scope="col" width= "15%">Description</th>
-                                    <th scope="col" width= "15%">Image</th>
+                                    <th scope="col" width= "15%">Home Title</th>
+                                    <th scope="col" width= "15%">Short Description</th>
+                                    <th scope="col" width= "15%">Long Description</th>
                                     <th scope="col" width= "15%">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
 
-                                @foreach($sliders as $slider)
+                                @foreach($homeabout as $about)
                                 <tr>
-                                    <th scope="row">{{ $sliders->firstItem()+$loop->index }}</th>
-                                    <td>{{ $slider->title }}</td>
-                                    <td>{{ $slider->description }}</td>
-                                    <td><img src="{{ URL::to('public/storage/'.$slider->image) }}" style="height: 40px; width: 70px;" alt=""></td>
+                                    <th scope="row">{{ $homeabout->firstItem()+$loop->index }}</th>
+                                    <td >{{ $about->title }}</td>
+                                    <td >{{ $about->short_dis }}</td>
+                                    <td > {{ $about->long_dis }}</td>
 
                                     <td>
-                                        <a href="{{ url('slider/edit/'.$slider->id) }}" class="btn btn-info">Edit</a>
-                                        <a href="{{ url('slider/delete/'.$slider->id)  }}" class="btn btn-danger" >Trash</a>
+                                        <a href="{{ url('about/edit/'.$about->id) }}" class="btn btn-info">Edit</a>
+                                        <a href="{{ url('about/delete/'.$about->id)  }}" class="btn btn-danger" 
+                                        onclick="return confirm('Are you sure to delete')">Delete</a>
                                     </td>
 
                                 </tr>
