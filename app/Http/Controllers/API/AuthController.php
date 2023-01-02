@@ -63,7 +63,7 @@ class AuthController extends Controller
 
             $user = Auth::user();
             $success['token'] = $user->createToken('MyApp')->plainTextToken;
-            $success['name'] = $user->name;
+            $success['user'] = $user;
     
             $response = [
     
@@ -78,7 +78,7 @@ class AuthController extends Controller
 
             $response = [
                 'success' => false,
-                'message' => 'Unauthorised'
+                'message' => 'User Not Found..!'
             ];
 
             return response()->json($response);
@@ -104,6 +104,17 @@ class AuthController extends Controller
 
         return response()->json($response);
     
+
+    }
+
+    public function userDelete(Request $request){
+        
+
+    $request->user()->currentAccessToken()->delete();
+    
+   
+    $delete = User::find($request->id)->delete();
+    return response()->json('User Deleted');
 
     }
 

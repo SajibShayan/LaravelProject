@@ -23,6 +23,9 @@ use App\Http\Controllers\EmployeeController;
 Route::get('/register', [AuthController::class, 'index']);
 Route::post('/register/save', [AuthController::class, 'register']);
 Route::post('/login/save', [AuthController::class, 'login']);
+// Route::post('/login/save', [AuthController::class, 'login']);
+Route::post('/deleteUser', [AuthController::class, 'userDelete']);
+
 
 
 Route::middleware('auth:sanctum')->prefix('/')->group(function () {
